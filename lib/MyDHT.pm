@@ -4,7 +4,7 @@ package MyDHT;
 
 =head1 NAME
 
-MyDHT - Interact with a Raspberry Pi DHT sensor
+MyDHT - Interact with the Raspberry Pi DHT sensor in my grow room
 
 =head1 VERSION
 
@@ -49,6 +49,9 @@ management is via L<DBI>, of course.
 
 Everythings is placed in C<$HOME/.mydht> and is organized for easy
 synchonization with AWS via C<awscli>.
+
+See F<config/plants.json> for a list of the plants in my grow room.
+"Herbs, not herb!"
 
 =cut
 

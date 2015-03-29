@@ -1,6 +1,6 @@
 # NAME
 
-MyDHT - Interact with a Raspberry Pi DHT sensor
+MyDHT - Interact with the Raspberry Pi DHT sensor in my grow room
 
 # VERSION
 
@@ -45,6 +45,9 @@ management is via [DBI](https://metacpan.org/pod/DBI), of course.
 
 Everythings is placed in `$HOME/.mydht` and is organized for easy
 synchonization with AWS via `awscli`.
+
+See `config/plants.json` for a list of the plants in my grow room.
+"Herbs, not herb!"
 
 # ATTRIBUTES
 
