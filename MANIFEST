@@ -1,0 +1,16 @@
+bin/dht_initialize
+bin/dht_measure
+bin/dht_update
+Build.PL
+config/old.log
+config/page.tmpl
+config/plants.json
+config/plot.tmpl
+lib/MyDHT.pm
+LICENSE
+MANIFEST			This list of files
+README.md
+web/closeup.jpg
+web/closeup_thumb.jpg
+web/view.jpg
+web/view_thumb.jpg
