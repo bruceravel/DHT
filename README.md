@@ -167,9 +167,7 @@ See `config/plants.json` for a list of the plants in my grow room.
 - [File::Slurp](https://metacpan.org/pod/File::Slurp)
 - [Graphics::GnuplotIF](https://metacpan.org/pod/Graphics::GnuplotIF)
 - [Text::Template](https://metacpan.org/pod/Text::Template)
-- [List::Util](https://metacpan.org/pod/List::Util)
-- [List::MoreUtils](https://metacpan.org/pod/List::MoreUtils)
-- [File::Spec](https://metacpan.org/pod/File::Spec)
+- [JSON::Tiny](https://metacpan.org/pod/JSON::Tiny)
 
 # BUGS AND LIMITATIONS
 

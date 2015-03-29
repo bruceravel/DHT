@@ -421,11 +421,7 @@ sub page {
 
 =item L<Text::Template>
 
-=item L<List::Util>
-
-=item L<List::MoreUtils>
-
-=item L<File::Spec>
+=item L<JSON::Tiny>
 
 =back
 
