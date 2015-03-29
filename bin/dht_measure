@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+
+use strict;
+use MyDHT;
+
+my $dht = MyDHT->new();
+$dht->measure;

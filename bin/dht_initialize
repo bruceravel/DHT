@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+
+use strict;
+use DBI;
+use Time::Stamp qw(localstamp);
+use File::Slurp;
+
+unlink 'dht.db';
+my $dbh = DBI->connect(
+		       "dbi:SQLite:dbname=dht.db",
+		       "",
+		       "",
+		       { RaiseError => 1 },
+		      ) or die $DBI::errstr;
+
+$dbh->do("DROP TABLE IF EXISTS TempHum");
+$dbh->do("CREATE TABLE TempHum(Id INT PRIMARY KEY, DateTime TEXT, T1 REAL, Hum REAL, T2 REAL)");
+
+my $time = localstamp;
+my $text = read_file("dht.log");
+
+my ($t1, $h, $t2) = (-1, -1, -1);
+if ($text =~ m{T:(\d+\.\d+)F}) {
+  $t1 = $1;
+}
+if ($text =~ m{H:(\d+\.\d+)}) {
+  $h = $1;
+}
+if ($text =~ m{T2:(\d+\.\d+)}) {
+  $t2 = $1;
+}
+
+#print $time, $/;
+#print join("|", $t1, $h, $t2), $/;
+
+$dbh->do("INSERT INTO TempHum VALUES(1,'$time', $t1, $h, $t2)");
+
+
+$dbh->disconnect();

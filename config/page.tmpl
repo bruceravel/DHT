@@ -1,0 +1,143 @@
+{
+  @keys = sort keys %{$json};
+  @values = ();
+  foreach $i (0 .. $#keys) {
+    @values[$i] = $json->{$keys[$i]};
+  };
+  q{};
+}
+<html>
+<head>
+<title>Growspace temperature and humidity</title>
+</head>
+<link rel="stylesheet" href="dht.css">
+<body>
+<h1>Growspace temperature and humidity</h1>
+
+<table>
+  <tr>
+    <th width=25%> Most recent </th>
+    <th width=25%> Temp. 1 </th>
+    <th width=25%> Humidity </th>
+    <th width=25%> Temp. 2 </th>
+  <tr>
+    <td>
+      {$time}<br>
+      <font size=1>Readings made every {$measurement_period} minutes.</font><br>
+      <font size=1>Page updated every {$webpage_period} hours.</font>
+    </td>
+    <td valign="top"> {$t1} F </td>
+    <td valign="top"> {$h}%   </td>
+    <td valign="top"> {$t2} F </td>
+  </tr>
+</table>
+
+<p>
+
+</p>
+
+<table>
+  <tr>
+    <th> Last 24 hours </th>
+    <th> Last 7 days </th>
+  </tr>
+  <tr>
+    <td>
+      <a href="day.png">
+	<img src="day.png" width=90% alt="Last 24 hours">
+      </a>
+    </td>
+    <td>
+      <a href="week.png">
+	<img src="week.png" width=90% alt="Last 7 days">
+      </a>
+    </td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th> DHT sensor </th>
+    <th> DHT, closeup </th>
+  </tr>
+  <tr>
+    <td>
+      <a href="view.jpg">
+	<img src="view_thumb.jpg" width=90% alt="View of DHT project">
+      </a>
+    </td>
+    <td>
+      <a href="closeup.jpg">
+	<img src="closeup_thumb.jpg" width=90%
+	     alt="Close-up view of RGB displaying temperature and humidity">
+      </a>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+<h2> This project was made from this neat stuff </h2>
+<table>
+  <tr>
+    <th width=60% align="left">Hardware, Software, Seedware</th>
+    <th width=20% align="right">Greenware</th>
+    <th width=10% align="left">Status</th>
+  </tr>
+  <tr>
+    <!-- links -->
+    <td rowspan="{$#keys+1}" valign="top">
+      <ol align="left">
+	<li>
+	  <a href="http://www.adafruit.com/products/2358">Raspberry Pi 2
+	    - Model B - ARMv7 with 1G RAM</a>
+	</li>
+	<li>
+	  <a href="http://www.dexterindustries.com/site/?product=grovepi-starter-kit-raspberry-pi">GrovePi+
+	    Starter Kit</a>
+	  and <a href="https://github.com/DexterInd/GrovePi/">the Grove Pi
+	    software</a>
+	</li>
+	<li>
+	  <a href="http://www.adafruit.com/products/393">AM2302 (wired
+	    DHT22) temperature-humidity sensor</a>
+	</li>
+	<li>
+	  <a href="http://detroit-electronics.com/Wifi_Adapter_Dongle_For_Raspberry_Pi/wifi-for-raspberry-pi-antenna">Raspberry
+	    Pi wifi antenna</a>
+	</li>
+	<li>
+	  <a href="https://www.sqlite.org/">SQLite</a>
+	</li>
+	<li>
+	  <a href="https://metacpan.org/pod/DBI">DBI</a>
+	  and <a href="https://metacpan.org/pod/Text::Template">Text::Template</a>
+	</li>
+	<li>
+	  <a href="http://gnuplot.info">Gnuplot</a> and 
+	  <a href="https://metacpan.org/pod/Graphics::GnuplotIF">Graphics::GnuplotIF</a>
+	</li>
+	<li>
+	  Peppers, epazote, and anise
+	  from <a href="http://www.southernexposure.com/">Southern
+	  Exposure Seed Exchange</a>.
+	</li>
+	<li>
+	  All other seeds from <a href="http://www.rareseeds.com/">Baker Creek Heirloom Seeds</a>.
+	</li>
+      </ol>
+    </td>
+    <!-- plants -->
+    <td>{$keys->[0]}</td>
+    <!-- showing -->
+    <td>{$values->[0]}</td>
+  </tr>
+{foreach $i (1 .. $#keys) {
+  $OUT .= "  <tr><td align=\"right\">".$keys[$i]."</td><td align=\"left\">".$values[$i]."</td></tr>\n";
+ }
+}
+</table>
+</body>
+
+</html>

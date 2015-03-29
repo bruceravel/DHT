@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+use strict;
+use MyDHT;
+my $dht = MyDHT->new();
+$dht->plot("day");
+$dht->plot("week");
+$dht->page;
