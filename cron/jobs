@@ -1,0 +1,5 @@
+#Upload a fresh html page with growspace temperature and humidity to my AWS space
+5 */2 * * *	/home/bruce/bin/dht-to-aws.sh
+
+#Make a measurement with the DHT sensor
+*/10 * * * *	/home/bruce/bin/dht_measure.sh
