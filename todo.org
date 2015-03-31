@@ -6,7 +6,7 @@
 
 Regarding #1:
 :      set datafile missing "-99"
-and consider plotting with points instead of lines
+and make plot using ~1:($2)~ insetad of ~1:2~
 
 Or, plot with lines, but when writing scratch file, replace lines with -99 with a single blank line:
 
