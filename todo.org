@@ -7,3 +7,7 @@
 Regarding #1:
 :      set datafile missing "-99"
 and consider plotting with points instead of lines
+
+Or, plot with lines, but when writing scratch file, replace lines with -99 with a single blank line:
+
+http://superuser.com/questions/440947/in-gnuplot-how-to-plot-with-lines-but-skip-missing-data-points
