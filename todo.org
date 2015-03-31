@@ -1,0 +1,5 @@
+* DHT todo list
+
+ 1. Don't insert data into database if value(s) are -99
+ 2. Include python code from RPi in the repo
+ 3. Somehow clarify measurement gaps when generating plots (as weewx does)
