@@ -3,3 +3,7 @@
  1. Don't insert data into database if value(s) are -99
  2. Include python code from RPi in the repo
  3. Somehow clarify measurement gaps when generating plots (as weewx does)
+
+Regarding #1:
+:      set datafile missing "-99"
+and consider plotting with points instead of lines
