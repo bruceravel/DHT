@@ -335,12 +335,7 @@ sub plot {
     push(@t, $t2[$i])  if ($t2[$i]  > -10);
     push(@h, $hum[$i]) if ($hum[$i] > -10);
   };
-  # foreach my $i (reverse @drop) {
-  #   splice(@time, $i, 1);
-  #   splice(@t1,   $i, 1);
-  #   splice(@hum,  $i, 1);
-  #   splice(@t2,   $i, 1);
-  # };
+
   open(my $DAT, '>', $self->datafile);
   foreach my $i (0 .. $#time) {
     printf $DAT "%s  %.1f  %.1f  %.1f\n", $time[$i], $t1[$i], $hum[$i], $t2[$i];

@@ -1,12 +1,14 @@
 
 from grovepi import *
 from grove_rgb_lcd import setRGB, setText
-import struct, sys, time, random
+import struct, sys, time, random, os
 
 address = 0x04                  # arduino address
 deflist = [254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254]
 bValue = 4250                   # analog temp parameter for GrovePi model 1.1
 progress = False
+
+os.putenv('TZ', 'America/New_York')
 
 def dht_prep(pin=7, model=1):
     while True:
