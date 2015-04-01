@@ -92,8 +92,8 @@ has 'y2max'     => (is => 'rw', isa => 'Num', default => 0);
 has 'span'      => (is => 'rw', isa => 'Str', default => q{});
 has 'file'      => (is => 'rw', isa => 'Str', default => q{});
 
-has 'measurement_period' => (is => 'rw', isa => 'Int', default => 2);
-has 'webpage_period' => (is => 'rw', isa => 'Int', default => 10);
+has 'measurement_period' => (is => 'rw', isa => 'Int', default => 10);
+has 'webpage_period' => (is => 'rw', isa => 'Int', default => 2);
 
 
 =pod
@@ -329,26 +329,28 @@ sub plot {
   my @t2   = @{ $self->fetch_array("T2",       $self->then) };
 
   ## this bit could be easier with PDL...
-  my @drop;
+  my (@t, @h);
   foreach my $i (0 .. $#time) {
-    push(@drop, $i) if (($t1[$i]<-1) or ($hum[$i]<-1) or ($t2[$i]<-1));
+    push(@t, $t1[$i])  if ($t1[$i]  > -10);
+    push(@t, $t2[$i])  if ($t2[$i]  > -10);
+    push(@h, $hum[$i]) if ($hum[$i] > -10);
   };
-  foreach my $i (reverse @drop) {
-    splice(@time, $i, 1);
-    splice(@t1,   $i, 1);
-    splice(@hum,  $i, 1);
-    splice(@t2,   $i, 1);
-  };
+  # foreach my $i (reverse @drop) {
+  #   splice(@time, $i, 1);
+  #   splice(@t1,   $i, 1);
+  #   splice(@hum,  $i, 1);
+  #   splice(@t2,   $i, 1);
+  # };
   open(my $DAT, '>', $self->datafile);
   foreach my $i (0 .. $#time) {
     printf $DAT "%s  %.1f  %.1f  %.1f\n", $time[$i], $t1[$i], $hum[$i], $t2[$i];
   };
   close $DAT;
 
-  $self->ymin(min(@t1, @t2) - 5);
-  $self->ymax(max(@t1, @t2) + 5);
-  $self->y2min(min(@hum) - 5);
-  $self->y2max(max(@hum) + 5);
+  $self->ymax(max(@t) + 5);
+  $self->ymin(min(@t) - 5);
+  $self->y2min(min(@h) - 5);
+  $self->y2max(max(@h) + 5);
   my %span = (day => '24 hours', week => '7 days', month => '30 days');
   $self->span($span{$which});
   $self->file($which . '.png');

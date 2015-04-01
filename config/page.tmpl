@@ -6,11 +6,12 @@
   };
   q{};
 }
+<!doctype html>
 <html>
 <head>
+<link rel="stylesheet" href="dht.css">
 <title>Growspace temperature and humidity</title>
 </head>
-<link rel="stylesheet" href="dht.css">
 <body>
 <h1>Growspace temperature and humidity</h1>
 
@@ -87,7 +88,7 @@
   </tr>
   <tr>
     <!-- links -->
-    <td rowspan="{$#keys+1}" valign="top">
+    <td rowspan="{$#keys+1}" align="left" valign="top">
       <ol align="left">
 	<li>
 	  <a href="http://www.adafruit.com/products/2358">Raspberry Pi 2
@@ -129,9 +130,9 @@
       </ol>
     </td>
     <!-- plants -->
-    <td>{$keys->[0]}</td>
+    <td align="right">{$keys[0]}</td>
     <!-- showing -->
-    <td>{$values->[0]}</td>
+    <td align="left">{$values[0]}</td>
   </tr>
 {foreach $i (1 .. $#keys) {
   $OUT .= "  <tr><td align=\"right\">".$keys[$i]."</td><td align=\"left\">".$values[$i]."</td></tr>\n";

@@ -19,9 +19,11 @@ set ylabel "temperature (F)"
 set y2tics
 set y2label "relative humidity"
 
+set datafile missing "-99.0"
+
 set yrange [{$S->ymin}:{$S->ymax}]
 set y2range [{$S->y2min}:{$S->y2max}]
 
-plot '{$S->folder}/dht.scratch' using 1:2 with lines ls 1 axes x1y1 title "Temp. 1",\
-     '{$S->folder}/dht.scratch' using 1:4 with lines ls 2 axes x1y1 title "Temp. 2",\
-     '{$S->folder}/dht.scratch' using 1:3 with lines ls 3 axes x1y2 title "Humidity"
+plot '{$S->folder}/dht.scratch' using 1:($2) with lines ls 1 axes x1y1 title "Temp. 1",\
+     '{$S->folder}/dht.scratch' using 1:($4) with lines ls 2 axes x1y1 title "Temp. 2",\
+     '{$S->folder}/dht.scratch' using 1:($3) with lines ls 3 axes x1y2 title "Humidity"
