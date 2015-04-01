@@ -1,0 +1,6 @@
+# DHT project to do list
+
+ 1. specify timezone when making ssh call to RPi so that local time is shown on the RGB display
+ 2. Update plants.json
+ 3. Ask the eggplant very kindly to sprout!
+ 
