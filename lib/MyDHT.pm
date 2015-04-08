@@ -260,7 +260,7 @@ Grab the temperature and humidity data from the Raspberry Pi via ssh.
 
 sub probe {
   my ($self) = @_;
-  my $text = `/usr/bin/ssh -i /home/bruce/.ssh/id_rsa_dht pi\@192.168.1.9 'cd /home/pi/play/temp && sudo python growspace_th.py'`;
+  my $text = `/usr/bin/ssh -i /home/bruce/.ssh/id_rsa_dht -o ConnectTimeout=120 -o BatchMode=yes -o StrictHostKeyChecking=no -o ServerAliveCountMax=5 -o ServerAliveInterval=10 pi\@192.168.1.101 'cd /home/pi/play/temp && sudo python growspace_th.py'`;
   return $text;
 };
 
@@ -363,8 +363,8 @@ sub plot {
 
 =item page()
 
-Generate an HTML plot of the DHT data.  The HTML file will be written
-to C<$self-E<gt>folder>.
+Generate an HTML file for the DHT project.  The HTML file will be
+written to C<$self-E<gt>folder>.
 
   $self->page;
 

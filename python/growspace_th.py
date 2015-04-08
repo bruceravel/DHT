@@ -7,6 +7,7 @@ address = 0x04                  # arduino address
 deflist = [254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254, 254]
 bValue = 4250                   # analog temp parameter for GrovePi model 1.1
 progress = False
+count_max = 20
 
 os.putenv('TZ', 'America/New_York')
 
@@ -125,11 +126,17 @@ def data_to_rgb(dht_t=0, dht_h=0, t2=0):
     setText(message)
     print message
 
+
+count = 0
+t = -99
+h = -99
 while True:          # on occassion the DHT returns -10^38 for T and H
+    count = count + 1
+    if count > count_max: break
     time.sleep(0.2)
     n     = dht_prep(7,1)
     [t,h] = dht_calc(n)
     if t>0:
         break
-t2    = analog_temp()
+t2 = analog_temp()
 data_to_rgb(t,h,t2)
