@@ -1,6 +1,3 @@
 # DHT project to do list
 
- 1. specify timezone when making ssh call to RPi so that local time is shown on the RGB display
- 2. Update plants.json
- 3. Ask the eggplant very kindly to sprout!
- 
+ 1. Put a counter on all ~while True:~ blocks so that the script will eventually return even when the interface board is hung 
